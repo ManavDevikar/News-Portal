@@ -1,0 +1,96 @@
+<!-- login.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css" />
+
+    <title>Login</title>
+    <style>
+        body {
+          /*  background-color: whitesmoke; /*Set background color to coral */
+            background-image: url(Images/wow.jpg);
+            padding-right: 220px;
+            text-align: right;
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        h1 {
+            font-size: 70px; /* Increase heading size to 70px */
+            margin-top: 50px; /* Add space on top */
+            text-decoration: underline  palevioletred;
+    
+            color: rebeccapurple ;
+            
+        }
+
+        button {
+            font-size: 24px; /* Increase button font size */
+            padding: 10px 20px; /* Increase button padding */
+            background-color:green; /* Set button color to LightPurple */
+
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            font-size: 28px; /* Increase input font size */
+            padding: 10px; /* Increase input padding */
+            width: 300px; /* Set input width */
+            margin-bottom: 20px; /* Add space below input */
+        }
+
+        label {
+            font-weight: bold; /* Make labels bold */
+            font-size: 40px; /* Increase label font size to 40px */
+        }
+
+        form {
+            margin-top: 50px; /* Add space between heading and form */
+        }
+    </style>
+</head>
+<body>
+    <h1>Login form</h1>
+    
+    <form id="loginForm" action="index.html" method = "GET" >
+        <label for="email">Username/Email:</label><br>
+        <input type="email" id="email" name="email" placeholder="Email" required><br><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" placeholder="Password" required><br><br>
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            var emailInput = document.getElementById('email');
+            var passwordInput = document.getElementById('password');
+            var email = emailInput.value.trim();
+            var password = passwordInput.value.trim();
+
+            // Check if email and password are not empty
+            if (email === '' || password === '') {
+                alert('Please enter both email and password.');
+                event.preventDefault(); // Prevent form submission
+                return false;
+            }
+
+            // Check if email ends with "@rknec.edu"
+            if (!email.endsWith('@gmail.com')) {
+                alert('Only email addresses ending with "@gmail.com" are allowed.');
+                event.preventDefault(); // Prevent form submission
+                return false;
+            }
+
+            // Check if password is at least 8 characters long
+            if (password.length < 6) {
+                alert('Password must be 8 characters or more.');
+                event.preventDefault(); // Prevent form submission
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>
